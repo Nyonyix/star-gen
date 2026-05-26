@@ -1,0 +1,173 @@
+class_name SolarSystem
+extends Celestial
+
+var number_of_stars: int:
+	get:
+		return number_of_stars
+	set(v):
+		number_of_stars = v
+
+var number_of_non_stars: int:
+	get:
+		return number_of_non_stars
+	set(v):
+		number_of_non_stars = v
+
+var stars: Array[Star] = []:
+	get:
+		return stars
+	set(v):
+		stars = v
+
+var root: Node2D:
+	get:
+		return root
+	set(v):
+		root = v
+
+func _init(p_id: int, p_no_gen: bool) -> void:
+
+	random = RandomNumberGenerator.new()
+	random.seed = p_id
+	id = p_id
+
+	if p_no_gen == false:
+		self._generate_stars()
+		number_of_stars = stars.size()
+		age = stars[0].age
+
+		for i in stars:
+			i.age = age
+
+		number_of_non_stars = 0
+
+func _generate_stars() -> void:
+
+	var primary: Star = self._generate_primary_star()
+	stars.append(primary)
+
+	var current = primary
+	var depth: int = 0
+
+	while _should_split_star(current.mass, depth):
+
+		var comp_mass: float = self._determine_companion_mass(current.mass)
+		if comp_mass < 0.08:
+			break
+		
+		var companion: Star = self._generate_companion_star(comp_mass)
+		if companion == null:
+			break
+
+		stars.append(companion)
+
+		var orbit: Orbit = self._generate_orbit_star(current, companion)
+
+		var bary: Barycenter = Barycenter.new(self.random.randi(), current, companion, orbit)
+
+		current = bary
+		depth += 1
+	
+	self.root = current
+
+func _should_split_star(p_total_mass_solar: float, depth: int) -> bool:
+
+	if depth >= 3:
+		return false
+
+	var base_probability: float = 0.2
+	if p_total_mass_solar > 8.0:
+		base_probability = 0.9
+	elif p_total_mass_solar > 2.0:
+		base_probability = 0.65
+	elif p_total_mass_solar > 0.5:
+		base_probability = 0.5
+
+	var depth_factor: float = pow(0.3, depth)
+	
+	return self.random.randf() < base_probability * depth_factor
+
+func _determine_companion_mass(p_total_mass_solar: float) -> float:
+
+	return p_total_mass_solar * self.random.randf_range(0.1, 0.9)
+
+func _generate_primary_star() -> Star:
+
+	return Star.new(self.random.randi(), false)
+
+func _generate_companion_star(p_target_mass: float) -> Star:
+
+	return Star.new(self.random.randi(), false, p_target_mass)
+
+func _generate_orbit_star(p_primary: Node2D, companion: Star) -> Orbit:
+
+	var r_eff_prim: float
+	if p_primary is Star:
+		r_eff_prim = p_primary.radius * NyonUtils.SOLAR_RADIUS
+	else:
+		r_eff_prim = p_primary.orbit.semi_major_axis * (1.0 + p_primary.orbit.eccentricity)
+
+	var r_eff_comp = companion.radius * NyonUtils.SOLAR_RADIUS
+	var physical_min = 3.0 * (r_eff_prim + r_eff_comp)
+
+	var stability_min: float = 0.0
+	if p_primary is Barycenter:
+		stability_min = 5.0 * p_primary.orbit.semi_major_axis
+
+	var a_min = max(physical_min, stability_min)
+	var a_min_au = a_min / NyonUtils.AU
+	if a_min_au > 500.0:
+		a_min_au  = 500
+
+	var log_a_min = log(a_min_au) / log(10)
+	var log_a_max = log(500.0) / log(10)
+	var a_au: float = exp(self.random.randf_range(log_a_min, log_a_max) * log(10.0))
+	# var a_au = pow(10.0, self.random.randf_range(log_a_min, log_a_max))
+
+	var e = sqrt(self.random.randf())
+	while a_au * (1.0 - e) < a_min_au and e > 0.0:
+		e -= 0.05
+	e = max(e, 0.0)
+
+	var a_m = a_au * NyonUtils.AU
+	var m_tot_kg = (p_primary.mass + companion.mass) * NyonUtils.SOLAR_MASS
+	var p_sec = TAU * sqrt(pow(a_m, 3.0) / (NyonUtils.GRAVITATIONAL_CONSTANT * m_tot_kg))
+
+	return Orbit.new(a_m, p_sec, e, self.random.randf_range(0.0, TAU))
+
+func to_dict() -> Dictionary:
+
+	return {
+		"system_id": self.id,
+		"root_object": self.root.to_dict(),
+		"number_of_stars": number_of_stars,
+		"number_of_non_stars": number_of_non_stars
+	}
+
+static func _collect_stars(node: Node2D) -> Array[Star]:
+
+	if node is Star:
+		return [node]
+	
+	var bary = node as Barycenter
+	var arr: Array[Star] = []
+
+	arr.append_array(_collect_stars(bary.child_a))
+	arr.append_array(_collect_stars(bary.child_b))
+
+	return arr
+
+static func from_dict(p_dict: Dictionary) -> SolarSystem:
+
+	var sys: SolarSystem = SolarSystem.new(p_dict["system_id"], true)
+	
+	if p_dict["root_object"]["type"] == 'star':
+		sys.root = Star.from_dict(p_dict["root_object"])
+	else:
+		sys.root = Barycenter.from_dict(p_dict["root_object"])
+
+	sys.number_of_stars = p_dict["number_of_stars"]
+	sys.number_of_non_stars = p_dict["number_of_non_stars"]
+	sys.stars = _collect_stars(sys.root)
+
+	return sys

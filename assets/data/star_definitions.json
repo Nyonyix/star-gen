@@ -1,0 +1,506 @@
+{
+    "star": {
+        "spectral_classes": {
+            "M": {
+                "temperature": [
+                    2400,
+                    3700
+                ],
+                "class_descriptor": "Red",
+                "weight": 62.0,
+                "luminosity_classes": {
+                    "V": {
+                        "class_descriptor": "Main Sequence",
+                        "mass": [
+                            0.08,
+                            0.45
+                        ],
+                        "radius": [
+                            0.1,
+                            0.7
+                        ],
+                        "luminosity": [
+                            0.0001,
+                            0.08
+                        ],
+                        "weight": 74.0
+                    },
+                    "III": {
+                        "class_descriptor": "Giant",
+                        "mass": [
+                            1.0,
+                            8.0
+                        ],
+                        "radius": [
+                            10,
+                            150
+                        ],
+                        "luminosity": [
+                            10,
+                            1000
+                        ],
+                        "weight": 15.0
+                    },
+                    "II": {
+                        "class_descriptor": "Bright Giant",
+                        "mass": [
+                            8,
+                            10
+                        ],
+                        "radius": [
+                            150,
+                            200
+                        ],
+                        "luminosity": [
+                            1000,
+                            5000
+                        ],
+                        "weight": 6.0
+                    },
+                    "I": {
+                        "class_descriptor": "Supergiant",
+                        "mass": [
+                            10,
+                            40
+                        ],
+                        "radius": [
+                            200,
+                            1500
+                        ],
+                        "luminosity": [
+                            5000,
+                            500000
+                        ],
+                        "weight": 4.0
+                    },
+                    "0": {
+                        "class_descriptor": "Hypergiant",
+                        "mass": [
+                            40,
+                            70
+                        ],
+                        "radius": [
+                            1500,
+                            2500
+                        ],
+                        "luminosity": [
+                            500000,
+                            1000000
+                        ],
+                        "weight": 1.0
+                    }
+                }
+            },
+            "K": {
+                "temperature": [
+                    3700,
+                    5200
+                ],
+                "class_descriptor": "Orange",
+                "weight": 12.0,
+                "luminosity_classes": {
+                    "V": {
+                        "class_descriptor": "Main Sequence",
+                        "mass": [
+                            0.45,
+                            0.8
+                        ],
+                        "radius": [
+                            0.7,
+                            0.9
+                        ],
+                        "luminosity": [
+                            0.08,
+                            0.6
+                        ],
+                        "weight": 85.0
+                    },
+                    "III": {
+                        "class_descriptor": "Giant",
+                        "mass": [
+                            1.0,
+                            5
+                        ],
+                        "radius": [
+                            10,
+                            100
+                        ],
+                        "luminosity": [
+                            50,
+                            1000
+                        ],
+                        "weight": 12.0
+                    },
+                    "I": {
+                        "class_descriptor": "Supergiant",
+                        "mass": [
+                            12,
+                            25
+                        ],
+                        "radius": [
+                            100,
+                            1200
+                        ],
+                        "luminosity": [
+                            10000,
+                            400000
+                        ],
+                        "weight": 3.0
+                    }
+                }
+            },
+            "G": {
+                "temperature": [
+                    5200,
+                    6000
+                ],
+                "class_descriptor": "Yellow",
+                "weight": 8.0,
+                "luminosity_classes": {
+                    "V": {
+                        "class_descriptor": "Main Sequence",
+                        "mass": [
+                            0.8,
+                            1.04
+                        ],
+                        "radius": [
+                            0.9,
+                            1.15
+                        ],
+                        "luminosity": [
+                            0.6,
+                            1.5
+                        ],
+                        "weight": 80.0
+                    },
+                    "IV": {
+                        "class_descriptor": "Subgiant",
+                        "mass": [
+                            1.0,
+                            1.5
+                        ],
+                        "radius": [
+                            1.5,
+                            5
+                        ],
+                        "luminosity": [
+                            1.5,
+                            10
+                        ],
+                        "weight": 10.0
+                    },
+                    "III": {
+                        "class_descriptor": "Giant",
+                        "mass": [
+                            1.0,
+                            4
+                        ],
+                        "radius": [
+                            10,
+                            50
+                        ],
+                        "luminosity": [
+                            30,
+                            500
+                        ],
+                        "weight": 8.0
+                    },
+                    "I": {
+                        "class_descriptor": "Supergiant",
+                        "mass": [
+                            10,
+                            20
+                        ],
+                        "radius": [
+                            100,
+                            1000
+                        ],
+                        "luminosity": [
+                            10000,
+                            300000
+                        ],
+                        "weight": 2.0
+                    }
+                }
+            },
+            "D": {
+                "class_descriptor": "White Dwarf",
+                "weight": 8.0,
+                "temperature": [
+                    4000,
+                    150000
+                ],
+                "luminosity_classes": {
+                    "D": {
+                        "class_descriptor": "Degenerate Remnant",
+                        "mass": [
+                            0.2,
+                            1.4
+                        ],
+                        "progenitor_mass": [
+                            0.8,
+                            8.0
+                        ],
+                        "radius": [
+                            0.008,
+                            0.02
+                        ],
+                        "luminosity": [
+                            0.00001,
+                            0.05
+                        ],
+                        "weight": 100.0
+                    }
+                }
+            },
+            "F": {
+                "temperature": [
+                    6000,
+                    7500
+                ],
+                "class_descriptor": "White-Yellow",
+                "weight": 4.0,
+                "luminosity_classes": {
+                    "V": {
+                        "class_descriptor": "Main Sequence",
+                        "mass": [
+                            1.04,
+                            1.4
+                        ],
+                        "radius": [
+                            1.15,
+                            1.4
+                        ],
+                        "luminosity": [
+                            1.5,
+                            5
+                        ],
+                        "weight": 85.0
+                    },
+                    "IV": {
+                        "class_descriptor": "Subgiant",
+                        "mass": [
+                            1.2,
+                            1.8
+                        ],
+                        "radius": [
+                            2,
+                            5
+                        ],
+                        "luminosity": [
+                            5,
+                            10
+                        ],
+                        "weight": 10.0
+                    },
+                    "III": {
+                        "class_descriptor": "Giant",
+                        "mass": [
+                            1.5,
+                            4
+                        ],
+                        "radius": [
+                            5,
+                            20
+                        ],
+                        "luminosity": [
+                            10,
+                            100
+                        ],
+                        "weight": 4.0
+                    },
+                    "I": {
+                        "class_descriptor": "Supergiant",
+                        "mass": [
+                            5,
+                            25
+                        ],
+                        "radius": [
+                            50,
+                            200
+                        ],
+                        "luminosity": [
+                            1000,
+                            500000
+                        ],
+                        "weight": 1.0
+                    }
+                }
+            },
+            "A": {
+                "temperature": [
+                    7500,
+                    10000
+                ],
+                "class_descriptor": "White",
+                "weight": 3.0,
+                "luminosity_classes": {
+                    "V": {
+                        "class_descriptor": "Main Sequence",
+                        "mass": [
+                            1.4,
+                            2.1
+                        ],
+                        "radius": [
+                            1.4,
+                            1.8
+                        ],
+                        "luminosity": [
+                            5,
+                            25
+                        ],
+                        "weight": 78.0
+                    },
+                    "III": {
+                        "class_descriptor": "Giant",
+                        "mass": [
+                            2.5,
+                            5
+                        ],
+                        "radius": [
+                            5,
+                            10
+                        ],
+                        "luminosity": [
+                            50,
+                            800
+                        ],
+                        "weight": 10.0
+                    },
+                    "I": {
+                        "class_descriptor": "Supergiant",
+                        "mass": [
+                            8,
+                            30
+                        ],
+                        "radius": [
+                            50,
+                            300
+                        ],
+                        "luminosity": [
+                            5000,
+                            800000
+                        ],
+                        "weight": 2.0
+                    }
+                }
+            },
+            "B": {
+                "temperature": [
+                    10000,
+                    30000
+                ],
+                "class_descriptor": "Blue-White",
+                "weight": 2.0,
+                "luminosity_classes": {
+                    "V": {
+                        "class_descriptor": "Main Sequence",
+                        "mass": [
+                            2.1,
+                            16
+                        ],
+                        "radius": [
+                            1.8,
+                            6.6
+                        ],
+                        "luminosity": [
+                            25,
+                            30000
+                        ],
+                        "weight": 70.0
+                    },
+                    "III": {
+                        "class_descriptor": "Giant",
+                        "mass": [
+                            5,
+                            20
+                        ],
+                        "radius": [
+                            7,
+                            20
+                        ],
+                        "luminosity": [
+                            800,
+                            50000
+                        ],
+                        "weight": 15.0
+                    },
+                    "I": {
+                        "class_descriptor": "Supergiant",
+                        "mass": [
+                            10,
+                            40
+                        ],
+                        "radius": [
+                            20,
+                            200
+                        ],
+                        "luminosity": [
+                            10000,
+                            1000000
+                        ],
+                        "weight": 5.0
+                    }
+                }
+            },
+            "O": {
+                "temperature": [
+                    30000,
+                    60000
+                ],
+                "class_descriptor": "Blue",
+                "weight": 1.0,
+                "luminosity_classes": {
+                    "V": {
+                        "class_descriptor": "Main Sequence",
+                        "mass": [
+                            16,
+                            90
+                        ],
+                        "radius": [
+                            6.6,
+                            15
+                        ],
+                        "luminosity": [
+                            30000,
+                            900000
+                        ],
+                        "weight": 80.0
+                    },
+                    "III": {
+                        "class_descriptor": "Giant",
+                        "mass": [
+                            20,
+                            100
+                        ],
+                        "radius": [
+                            15,
+                            30
+                        ],
+                        "luminosity": [
+                            100000,
+                            1000000
+                        ],
+                        "weight": 15.0
+                    },
+                    "I": {
+                        "class_descriptor": "Supergiant",
+                        "mass": [
+                            25,
+                            120
+                        ],
+                        "radius": [
+                            20,
+                            50
+                        ],
+                        "luminosity": [
+                            500000,
+                            5000000
+                        ],
+                        "weight": 5.0
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,251 @@
+{
+	"19498": {
+		"number_of_non_stars": 0,
+		"number_of_stars": 1,
+		"root_object": {
+			"age_Myr": 1.34358067764401,
+			"class": "M0.7I Red Supergiant",
+			"density_gm3": 0.000000022796017527247,
+			"id": 3195620631,
+			"luminosity_Lsun": 403605.108458452,
+			"mass_Msun": 41.1953126310092,
+			"radius_Rsun": 1365.79839784119,
+			"surface_area_SAsun": 1865405.26354562,
+			"surface_gravity_ms2": 0.00605566605311005,
+			"temperature_K": 3936.61048251999,
+			"type": "star"
+		},
+		"system_id": 19498
+	},
+	"19499": {
+		"number_of_non_stars": 0,
+		"number_of_stars": 1,
+		"root_object": {
+			"age_Myr": 7822810118.3388,
+			"class": "D1.8D White Dwarf Degenerate Remnant",
+			"density_gm3": 307154.884919572,
+			"id": 3045122898,
+			"luminosity_Lsun": 75.9068636010679,
+			"mass_Msun": 1.28644256267461,
+			"radius_Rsun": 0.0180745703828432,
+			"surface_area_SAsun": 0.000326690094524364,
+			"surface_gravity_ms2": 1079796.07928668,
+			"temperature_K": 126725.160689301,
+			"type": "star"
+		},
+		"system_id": 19499
+	},
+	"19500": {
+		"number_of_non_stars": 0,
+		"number_of_stars": 1,
+		"root_object": {
+			"age_Myr": 687132608.0,
+			"class": "M8.0V Red Main Sequence",
+			"density_gm3": 18.7830993861411,
+			"id": 4017329794,
+			"luminosity_Lsun": 0.00191729988093167,
+			"mass_Msun": 0.157009978540296,
+			"radius_Rsun": 0.227567545108256,
+			"surface_area_SAsun": 0.0517869875865999,
+			"surface_gravity_ms2": 831.369173850262,
+			"temperature_K": 2531.88472974266,
+			"type": "star"
+		},
+		"system_id": 19500
+	},
+	"19501": {
+		"number_of_non_stars": 0,
+		"number_of_stars": 2,
+		"root_object": {
+			"child_a": {
+				"age_Myr": 4559862272.0,
+				"class": "K2.5V Orange Main Sequence",
+				"density_gm3": 1.39055214735518,
+				"id": 2731446893,
+				"luminosity_Lsun": 0.402809649791206,
+				"mass_Msun": 0.70625661077471,
+				"radius_Rsun": 0.894640883174414,
+				"surface_area_SAsun": 0.800382309847123,
+				"surface_gravity_ms2": 241.964892330678,
+				"temperature_K": 4861.57708879554,
+				"type": "star"
+			},
+			"child_b": {
+				"age_Myr": 4559862272.0,
+				"class": "M8.1V Red Main Sequence",
+				"density_gm3": 21.1220342603461,
+				"id": 1966019673,
+				"luminosity_Lsun": 0.00227389476667568,
+				"mass_Msun": 0.150401464233781,
+				"radius_Rsun": 0.215722659541964,
+				"surface_area_SAsun": 0.0465362658398599,
+				"surface_gravity_ms2": 886.232851849937,
+				"temperature_K": 2713.75907042527,
+				"type": "star"
+			},
+			"id": 3903997963,
+			"orbit": {
+				"argument_of_periapsis_deg": 119.718162413393,
+				"eccentricity": 0.6434427027888,
+				"period_days": 141281.331804772,
+				"semi_major_axis_au": 50.4196565579055
+			},
+			"type": "barycenter"
+		},
+		"system_id": 19501
+	},
+	"19502": {
+		"number_of_non_stars": 0,
+		"number_of_stars": 1,
+		"root_object": {
+			"age_Myr": 4025864960.0,
+			"class": "M9.5V Red Main Sequence",
+			"density_gm3": 68.9738573578118,
+			"id": 3275075046,
+			"luminosity_Lsun": 0.000398867938048115,
+			"mass_Msun": 0.0898551757221808,
+			"radius_Rsun": 0.122464398311774,
+			"surface_area_SAsun": 0.0149975288538654,
+			"surface_gravity_ms2": 1642.89838974905,
+			"temperature_K": 2330.92841385282,
+			"type": "star"
+		},
+		"system_id": 19502
+	},
+	"19503": {
+		"number_of_non_stars": 0,
+		"number_of_stars": 2,
+		"root_object": {
+			"child_a": {
+				"age_Myr": 5175.91939678862,
+				"class": "K9.1III Orange Giant",
+				"density_gm3": 0.0003824042937613,
+				"id": 1063818548,
+				"luminosity_Lsun": 59.8413941185755,
+				"mass_Msun": 1.40083498107555,
+				"radius_Rsun": 17.2853587693769,
+				"surface_area_SAsun": 298.783627786084,
+				"surface_gravity_ms2": 1.28563442953499,
+				"temperature_K": 3861.33789399352,
+				"type": "star"
+			},
+			"child_b": {
+				"age_Myr": 5175.91939678862,
+				"class": "D8.4D White Dwarf Degenerate Remnant",
+				"density_gm3": 462143.885620475,
+				"id": 3749802720,
+				"luminosity_Lsun": 0.0338533893676414,
+				"mass_Msun": 0.381508990552921,
+				"radius_Rsun": 0.0105187995822569,
+				"surface_area_SAsun": 0.000110645144651692,
+				"surface_gravity_ms2": 945496.070524073,
+				"temperature_K": 24140.3759498085,
+				"type": "star"
+			},
+			"id": 2957218141,
+			"orbit": {
+				"argument_of_periapsis_deg": 241.610893133978,
+				"eccentricity": 0.890901443946672,
+				"period_days": 1167.98600805926,
+				"semi_major_axis_au": 2.63166007966989
+			},
+			"type": "barycenter"
+		},
+		"system_id": 19503
+	},
+	"19504": {
+		"number_of_non_stars": 0,
+		"number_of_stars": 1,
+		"root_object": {
+			"age_Myr": 9812975616.0,
+			"class": "M7.4V Red Main Sequence",
+			"density_gm3": 15.5683058004799,
+			"id": 3261603723,
+			"luminosity_Lsun": 0.00274760936912736,
+			"mass_Msun": 0.176562490546353,
+			"radius_Rsun": 0.251927758648119,
+			"surface_area_SAsun": 0.063467595577467,
+			"surface_gravity_ms2": 762.840448487594,
+			"temperature_K": 2632.85726992021,
+			"type": "star"
+		},
+		"system_id": 19504
+	},
+	"19505": {
+		"number_of_non_stars": 0,
+		"number_of_stars": 2,
+		"root_object": {
+			"child_a": {
+				"age_Myr": 13025639424.0,
+				"class": "M5.4V Red Main Sequence",
+				"density_gm3": 9.16429293887084,
+				"id": 215598473,
+				"luminosity_Lsun": 0.0109630235518493,
+				"mass_Msun": 0.250179701272188,
+				"radius_Rsun": 0.337630258160362,
+				"surface_area_SAsun": 0.113994191225437,
+				"surface_gravity_ms2": 601.806203532642,
+				"temperature_K": 3214.31538347389,
+				"type": "star"
+			},
+			"child_b": {
+				"age_Myr": 13025639424.0,
+				"class": "M6.9V Red Main Sequence",
+				"density_gm3": 9.23644032520562,
+				"id": 1218715793,
+				"luminosity_Lsun": 0.00362866514307788,
+				"mass_Msun": 0.180517844680919,
+				"radius_Rsun": 0.302038400886459,
+				"surface_area_SAsun": 0.0912271956100525,
+				"surface_gravity_ms2": 542.604170271903,
+				"temperature_K": 2577.69911555217,
+				"type": "star"
+			},
+			"id": 4198836446,
+			"orbit": {
+				"argument_of_periapsis_deg": 255.667668332674,
+				"eccentricity": 0.654073238585377,
+				"period_days": 11.9647248635117,
+				"semi_major_axis_au": 0.0773155414830159
+			},
+			"type": "barycenter"
+		},
+		"system_id": 19505
+	},
+	"19506": {
+		"number_of_non_stars": 0,
+		"number_of_stars": 1,
+		"root_object": {
+			"age_Myr": 1260641152.0,
+			"class": "A0.4V White Main Sequence",
+			"density_gm3": 0.588680353442538,
+			"id": 566622138,
+			"luminosity_Lsun": 34.417653532783,
+			"mass_Msun": 1.94895301126486,
+			"radius_Rsun": 1.67120964792854,
+			"surface_area_SAsun": 2.79294168732955,
+			"surface_gravity_ms2": 191.349271197895,
+			"temperature_K": 10814.499576297,
+			"type": "star"
+		},
+		"system_id": 19506
+	},
+	"19507": {
+		"number_of_non_stars": 0,
+		"number_of_stars": 1,
+		"root_object": {
+			"age_Myr": 6499098624.0,
+			"class": "M0.1V Red Main Sequence",
+			"density_gm3": 1.7166237439049,
+			"id": 2549108029,
+			"luminosity_Lsun": 0.0579638387698189,
+			"mass_Msun": 0.470436030004523,
+			"radius_Rsun": 0.728336618805256,
+			"surface_area_SAsun": 0.530474230292691,
+			"surface_gravity_ms2": 243.177616411621,
+			"temperature_K": 3318.56090469234,
+			"type": "star"
+		},
+		"system_id": 19507
+	}
+}
