@@ -367,7 +367,8 @@ func to_dict() -> Dictionary:
 		"density_gm3": self.density,
 		"surface_gravity_ms2": self.surface_gravity,
 		"surface_area_SAsun": self.surface_area,
-		"age_Myr": self.age
+		"age_Myr": self.age,
+		"orbit": self.orbit.to_dict()
 	}
 
 static func from_dict(p_dict: Dictionary) -> Star:
@@ -383,5 +384,6 @@ static func from_dict(p_dict: Dictionary) -> Star:
 	s.surface_area = p_dict["surface_area_SAsun"]
 	s.surface_gravity = p_dict["surface_gravity_ms2"]
 	s.temperature = p_dict["temperature_K"]
+	s.orbit = Orbit.from_dict(p_dict["orbit"])
 
 	return s

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="StarGen"
-run/main_scene="uid://dx8s2kxchqxo0"
+run/main_scene="uid://nmjjltddgciw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+StarGenGameData="*uid://74h3khuk7220"
 
 [physics]
 

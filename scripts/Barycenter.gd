@@ -1,11 +1,5 @@
 class_name Barycenter
 extends Celestial
-
-var orbit: Orbit:
-    get:
-        return orbit
-    set(v):
-        orbit = v
     
 var child_a: Node2D:
     get:
@@ -19,7 +13,19 @@ var child_b: Node2D:
     set(v):
         child_b = v
 
-func _init(p_id: int, p_child_a: Node2D, p_child_b: Node2D, p_orbit: Orbit) -> void:
+var pair_sma: float:
+    get:
+        return pair_sma
+    set(v):
+        pair_sma = v
+
+var pair_e: float:
+    get:
+        return pair_e
+    set(v):
+        pair_e = v
+
+func _init(p_id: int, p_child_a: Node2D, p_child_b: Node2D) -> void:
 
     id = p_id
     random = RandomNumberGenerator.new()
@@ -27,7 +33,6 @@ func _init(p_id: int, p_child_a: Node2D, p_child_b: Node2D, p_orbit: Orbit) -> v
 
     child_a = p_child_a
     child_b = p_child_b
-    orbit = p_orbit
 
     mass = child_a.mass + child_b.mass
 
@@ -37,6 +42,8 @@ func to_dict() -> Dictionary:
         "type": "barycenter",
         "id": self.id,
         "orbit": self.orbit.to_dict(),
+        "pair_semi_major_axis_au": self.pair_sma / NyonUtils.AU,
+        "pair_eccentricity": self.pair_e,
         "child_a": self.child_a.to_dict(),
         "child_b": self.child_b.to_dict()
     }
@@ -57,5 +64,12 @@ static func from_dict(p_dict: Dictionary) -> Barycenter:
 
     var l_orbit: Orbit = Orbit.from_dict(p_dict["orbit"])
     var l_id: int = p_dict["id"]
+    var l_pair_sma = p_dict["pair_semi_major_axis_au"] * NyonUtils.AU
+    var l_pair_e = p_dict["pair_eccentricity"]
 
-    return Barycenter.new(l_id, l_child_a, l_child_b, l_orbit)
+    var bary: Barycenter = Barycenter.new(l_id, l_child_a, l_child_b)
+    bary.orbit = l_orbit
+    bary.pair_sma = l_pair_sma
+    bary.pair_e = l_pair_e
+
+    return bary

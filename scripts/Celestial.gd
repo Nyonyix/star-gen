@@ -73,6 +73,12 @@ var id: int:
 	set(v):
 		id = v
 
+var orbit: Orbit = Orbit.new(0, 0, 0, 0):
+	get:
+		return orbit
+	set(v):
+		orbit = v
+
 func calculate_volume(p_radius: float) -> float:
 
 	return (4.0/3.0) * PI * pow(p_radius, 3)

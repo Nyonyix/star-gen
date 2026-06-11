@@ -59,10 +59,27 @@ func _build_node(node: Node2D, depth: int, p_system_age: float) -> Node2D:
 	var child_a: Node2D = _build_node(node, depth + 1, p_system_age)
 	var child_b: Node2D = _build_node(companion, depth + 1, p_system_age)
 
-	var orbit: Orbit = self._generate_orbit_star(child_a, child_b)
-	var bary: Barycenter = Barycenter.new(self.random.randi(), child_a, child_b, orbit)
+	var orbit_total: Orbit = self._generate_orbit_star(child_a, child_b)
+	var m_total: float = child_a.mass + child_b.mass
+	var bary_id: int = self.random.randi()
+
+	child_a.orbit = _per_star_orbit(orbit_total, child_b.mass / m_total, child_a, bary_id)
+	child_b.orbit = _per_star_orbit(orbit_total, child_a.mass / m_total, child_b, bary_id)
+
+	var bary: Barycenter = Barycenter.new(bary_id, child_a, child_b)
+	bary.pair_e = orbit_total.eccentricity
+	bary.pair_sma = orbit_total.semi_major_axis
 
 	return bary
+
+func _per_star_orbit(p_total: Orbit, p_mass_fraction: float, p_child: Node2D, p_parent_id: int) -> Orbit:
+
+	var sma: float = p_total.semi_major_axis * p_mass_fraction
+	var ma: float = self.random.randf_range(0, TAU)
+	var ed: float = p_child.age * 365.25E6
+
+	return Orbit.new(sma, p_total.period, p_total.eccentricity, p_total.argument_of_periapsis, p_parent_id, ma, ed)
+
 
 func _should_split_star(p_total_mass_solar: float, depth: int) -> bool:
 
@@ -99,21 +116,21 @@ func _generate_orbit_star(child_a: Node2D, child_b: Node2D) -> Orbit:
 	if child_a is Star:
 		r_eff_a = child_a.radius * NyonUtils.SOLAR_RADIUS
 	else:
-		r_eff_a = child_a.orbit.semi_major_axis * (1 + child_a.orbit.eccentricity)
+		r_eff_a = child_a.pair_sma * (1 + child_a.pair_e)
 
 	var r_eff_b: float
 	if child_b is Star:
 		r_eff_b = child_b.radius * NyonUtils.SOLAR_RADIUS
 	else:
-		r_eff_b = child_b.orbit.semi_major_axis * (1 + child_b.orbit.eccentricity)
+		r_eff_b = child_b.pair_sma * (1 + child_b.pair_e)
 
 	var physical_min: float = 3.0 * (r_eff_a + r_eff_b)
 
 	var stability_min: float = 0.0
 	if child_a is Barycenter:
-		stability_min = max(stability_min, 5.0 * child_a.orbit.semi_major_axis)
+		stability_min = max(stability_min, 5.0 * child_a.pair_sma)
 	if child_b is Barycenter:
-		stability_min = max(stability_min, 5.0 * child_b.orbit.semi_major_axis)
+		stability_min = max(stability_min, 5.0 * child_b.pair_sma)
 
 	var a_min: float = max(physical_min, stability_min)
 	var a_min_au: float = a_min / NyonUtils.AU
@@ -141,7 +158,9 @@ func to_dict() -> Dictionary:
 		"system_id": self.id,
 		"root_object": self.root.to_dict(),
 		"number_of_stars": number_of_stars,
-		"number_of_non_stars": number_of_non_stars
+		"number_of_non_stars": number_of_non_stars,
+		"position_x": self.position.x,
+		"position_y": self.position.y
 	}
 
 static func _collect_stars(node: Node2D) -> Array[Star]:
@@ -169,5 +188,7 @@ static func from_dict(p_dict: Dictionary) -> SolarSystem:
 	sys.number_of_stars = p_dict["number_of_stars"]
 	sys.number_of_non_stars = p_dict["number_of_non_stars"]
 	sys.stars = _collect_stars(sys.root)
+	sys.position.x = p_dict["position_x"]
+	sys.position.y = p_dict["position_y"]
 
 	return sys

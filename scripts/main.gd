@@ -1,6 +1,6 @@
 extends Node
 
-var system_seed: int = 1337
+var system_seed: int = 199293
 var random: RandomNumberGenerator = RandomNumberGenerator.new()
 var galaxy: Dictionary
 
