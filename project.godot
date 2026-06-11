@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 StarGenGameData="*uid://74h3khuk7220"
 
+[display]
+
+window/vsync/vsync_mode=0
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
