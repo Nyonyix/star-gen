@@ -69,7 +69,7 @@ func _on_start_generation() -> void:
 
 func _on_view_galaxy() -> void:
 
-	StarGenGameData.to_json(str("galaxy_", seed, ".json"))
+	get_tree().change_scene_to_file("res://GalaxyView.tscn")
 
 func _on_back_pressed() -> void:
 
@@ -79,3 +79,4 @@ func _on_back_pressed() -> void:
 func _on_file_selected(p_path: String) -> void:
 
 	StarGenGameData.from_json(p_path)
+	get_tree().change_scene_to_file("res://GalaxyView.tscn")

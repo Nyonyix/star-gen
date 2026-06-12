@@ -52,3 +52,96 @@ static func json_to_dict(p_path: String) -> Dictionary:
 	f.close()
 
 	return JSON.parse_string(json_string)
+
+static func _convert_red(kelvin: int) -> int:
+
+	if kelvin <= 66:
+
+		return 255
+	
+	else:
+
+		var red: int = round(329.698727446 * (kelvin - 60) ** -0.1332047592)
+		red = 0 if red < 0 else red
+		red = 255 if red > 255 else red
+		return red
+
+static func _convert_green(kelvin: int) -> int:
+
+	if kelvin <= 66:
+
+		var green:int = round(99.4708025861 * log(kelvin) - 161.11955681661)
+		green = 0 if green < 0 else green
+		green = 255 if green > 255 else green
+		return green
+
+	else:
+
+		var green: int = round(288.1221695283 * (kelvin - 60) ** -0.0755148492)
+		green = 0 if green < 0 else green
+		green = 255 if green > 255 else green
+		return green 
+
+static func _convert_blue(kelvin: int) -> int:
+
+	if kelvin >= 66:
+
+		return 255
+
+	else:
+
+		if kelvin <= 19:
+
+			return 0
+		
+		else:
+
+			var blue: int = round(138.5177312231 * log(kelvin - 10) - 305.0447927307)
+			blue = 0 if blue < 0 else blue
+			blue = 255 if blue > 255 else blue
+			return blue  
+
+static func convert_kelvin_to_rgb(kelvin: int) -> Color:
+
+	kelvin = kelvin / 100
+
+	return Color8(_convert_red(kelvin), _convert_green(kelvin), _convert_blue(kelvin))
+
+static func solve_kepler(M: float, e: float) -> float:
+
+	if e < 1E-10:
+		return M
+	
+	var E = M
+	for _i in range(20):
+		var dE = (E - e * sin(E) - M) / (1.0 - e * cos(E))
+		E -= dE
+		if abs(dE) < 1E-10:
+			break
+	
+	return E
+
+static func position_at_time(orbit: Orbit, t_days: float) -> Vector2:
+
+	var n = TAU / (orbit.period / 86400.0)
+	var M = fmod(orbit.mean_anomaly + n * (t_days - orbit.epoch_days), TAU)
+	var e = orbit.eccentricity
+	var E = solve_kepler(M, e)
+	var a = orbit.semi_major_axis
+	var x_local = a * (cos(E) - e)
+	var y_local = a * sqrt(1.0 - e * e) * sin(E)
+
+	return Vector2(x_local, y_local).rotated(orbit.argument_of_periapsis)
+
+static func ellipse_points(orbit: Orbit, n_points: int = 128) -> PackedVector2Array:
+
+	var pts = PackedVector2Array()
+	var e = orbit.eccentricity
+	var a = orbit.semi_major_axis
+	var b = a * sqrt(1.0 - e * e)
+	var c = a * e
+	for i in range(n_points + 1):
+		var angle = TAU * float(i) / n_points
+		pts.append(Vector2(a * cos(angle) - c, b * sin(angle)).rotated(orbit.argument_of_periapsis))
+
+	return pts

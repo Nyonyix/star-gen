@@ -43,6 +43,7 @@ func get_progress() -> float:
     return float(gen_index) / float(gen_count)
 
 func is_done() -> bool:
+    gen_ids.clear()
     return gen_index >= gen_count
 
 func system_count() -> int:

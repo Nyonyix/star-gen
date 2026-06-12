@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bs3857okjxsh2"]
+
+[ext_resource type="Script" uid="uid://djnn6331jbyj6" path="res://scripts/GalaxyView.gd" id="1_pn4jc"]
+
+[node name="Node2D" type="Node2D" unique_id=507265283]
+script = ExtResource("1_pn4jc")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=5488070]
+ignore_rotation = false
+
+[node name="UICanvas" type="CanvasLayer" parent="." unique_id=958904525]
+
+[node name="BackButton" type="Button" parent="UICanvas" unique_id=699569475]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 81.0
+offset_bottom = 41.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "<- Menu"
